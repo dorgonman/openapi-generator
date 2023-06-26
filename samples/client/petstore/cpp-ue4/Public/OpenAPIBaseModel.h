@@ -16,6 +16,7 @@
 #include "Interfaces/IHttpResponse.h"
 #include "Serialization/JsonWriter.h"
 #include "Dom/JsonObject.h"
+#include "Policies/CondensedJsonPrintPolicy.h"
 #include "HttpRetrySystem.h"
 #include "Containers/Ticker.h"
 #include "Runtime/Launch/Resources/Version.h"
@@ -23,7 +24,7 @@
 namespace OpenAPI
 {
 
-typedef TSharedRef<TJsonWriter<>> JsonWriter;
+typedef TSharedRef<TJsonWriter<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>> JsonWriter;
 using namespace FHttpRetrySystem;
 
 struct OPENAPI_API HttpRetryManager
