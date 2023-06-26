@@ -151,7 +151,7 @@ void OpenAPIStoreApi::PlaceOrderRequest::SetupHttpRequest(const FHttpRequestRef&
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();

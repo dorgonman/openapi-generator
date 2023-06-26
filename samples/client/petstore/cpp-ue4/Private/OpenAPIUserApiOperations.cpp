@@ -41,7 +41,7 @@ void OpenAPIUserApi::CreateUserRequest::SetupHttpRequest(const FHttpRequestRef& 
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
@@ -98,7 +98,7 @@ void OpenAPIUserApi::CreateUsersWithArrayInputRequest::SetupHttpRequest(const FH
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
@@ -155,7 +155,7 @@ void OpenAPIUserApi::CreateUsersWithListInputRequest::SetupHttpRequest(const FHt
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
@@ -367,7 +367,7 @@ void OpenAPIUserApi::UpdateUserRequest::SetupHttpRequest(const FHttpRequestRef& 
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
