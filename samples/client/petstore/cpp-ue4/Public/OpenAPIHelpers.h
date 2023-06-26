@@ -16,6 +16,7 @@
 
 #include "Serialization/JsonSerializer.h"
 #include "Dom/JsonObject.h"
+#include "Policies/CondensedJsonPrintPolicy.h"
 #include "Misc/Base64.h"
 #include "PlatformHttp.h"
 
@@ -24,7 +25,7 @@ class IHttpRequest;
 namespace OpenAPI
 {
 
-typedef TSharedRef<TJsonWriter<>> JsonWriter;
+typedef TSharedRef<TJsonWriter<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>> JsonWriter;
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -120,7 +121,7 @@ inline auto ToString(const T& EnumModelValue)
 inline FString ToString(const Model& Value)
 {
 	FString String;
-	JsonWriter Writer = TJsonWriterFactory<>::Create(&String);
+	JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&String);
 	Value.WriteJson(Writer);
 	Writer->Close();
 	return String;

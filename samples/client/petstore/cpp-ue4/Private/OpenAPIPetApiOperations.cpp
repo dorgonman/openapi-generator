@@ -41,7 +41,7 @@ void OpenAPIPetApi::AddPetRequest::SetupHttpRequest(const FHttpRequestRef& HttpR
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
@@ -313,7 +313,7 @@ void OpenAPIPetApi::UpdatePetRequest::SetupHttpRequest(const FHttpRequestRef& Ht
 	{
 		// Body parameters
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 
 		WriteJsonValue(Writer, Body);
 		Writer->Close();
@@ -379,7 +379,7 @@ void OpenAPIPetApi::UpdatePetWithFormRequest::SetupHttpRequest(const FHttpReques
 	{
 		// Form parameters added to try to generate a json body when no body parameters are specified.
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 		Writer->WriteObjectStart();
 		if (Name.IsSet()){
 			Writer->WriteIdentifierPrefix(TEXT("name"));
@@ -467,7 +467,7 @@ void OpenAPIPetApi::UploadFileRequest::SetupHttpRequest(const FHttpRequestRef& H
 	{
 		// Form parameters added to try to generate a json body when no body parameters are specified.
 		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+		JsonWriter Writer = TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&JsonBody);
 		Writer->WriteObjectStart();
 		if (AdditionalMetadata.IsSet()){
 			Writer->WriteIdentifierPrefix(TEXT("additionalMetadata"));
